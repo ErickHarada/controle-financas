@@ -6,6 +6,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule } from '@angular
 import { NavbarFlatNode, NavbarNode } from '../../interfaces/navbar.interface';
 import { TREE_DATA } from '../../consts/navbar/navbar.const';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +21,8 @@ export class NavbarComponent {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
       level: level,
-      icon: node.icon
+      icon: node.icon,
+      link: node.link
     };
   };
 
@@ -38,9 +40,13 @@ export class NavbarComponent {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor() {
+  constructor(private readonly router: Router) {
     this.dataSource.data = TREE_DATA;
   }
 
   hasChild = (_: number, node: NavbarFlatNode) => node.expandable;
+
+  navigateTo(route: string): void {
+    this.router.navigate([route])
+  }
 }

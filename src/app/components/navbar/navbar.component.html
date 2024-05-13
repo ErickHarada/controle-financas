@@ -1,6 +1,6 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
     <!-- This is the tree node template for leaf nodes -->
-    <mat-tree-node *matTreeNodeDef="let node" class="menu">
+    <mat-tree-node *matTreeNodeDef="let node" class="menu" (click)="navigateTo(node.link)">
         <!-- use a disabled button to provide padding for tree leaf -->
         <mat-icon class="mat-icon-rtl-mirror">
             {{node.icon}}
