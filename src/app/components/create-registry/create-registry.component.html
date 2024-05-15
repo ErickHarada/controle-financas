@@ -1,1 +1,47 @@
-<p>create-registry works!</p>
+<mat-card class="create-registry">
+    <mat-card-header class="create-registry__header">
+        <mat-card-title>
+            Criação de registro
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form class="form" [formGroup]="createRegistryForm">
+            <mat-radio-group class="form__radio-group" aria-label="Select an option" formControlName="type">
+                <mat-radio-button value="1">
+                    <div class="label">
+                        Entrada
+                        <mat-icon class="label__icon--green" matIconSuffix>arrow_circle_down</mat-icon>
+                    </div>
+                </mat-radio-button>
+                <mat-radio-button value="2">
+                    <div class="label">
+                        Saída
+                        <mat-icon class="label__icon--red" matIconSuffix>arrow_circle_up</mat-icon>
+                    </div>
+                </mat-radio-button>
+            </mat-radio-group>
+
+            <mat-form-field>
+                <mat-label>Categoria</mat-label>
+                <mat-select formControlName="category">
+                    @for (category of categoryList; track category) {
+                    <mat-option [value]="category"> {{ category.name }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Valor</mat-label>
+                <input type="text" matInput formControlName="value">
+                <mat-icon matIconPrefix>
+                    attach_money
+                </mat-icon>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+        <button [disabled]="createRegistryForm.invalid" mat-button (click)="create()">Criar</button>
+    </mat-card-actions>
+</mat-card>
