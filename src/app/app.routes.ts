@@ -6,11 +6,9 @@ export const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
-        children: [
-            {
-                path: 'controle',
-                component: ManagementComponent
-            }
-        ]
     },
+    {
+        path: 'controle',
+        component: ManagementComponent
+    }
 ];
