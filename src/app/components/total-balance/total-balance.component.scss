@@ -1,0 +1,14 @@
+.advanced-pie-legend {
+    .total-value {
+        line-height: 100%;
+    }
+
+    .legend-items-container {
+        .legend-items {
+            overflow: unset !important;
+            .legend-item .item-value {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
