@@ -1,7 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
-const { app } = require('electron');
 
 // run this as early in the main process as possible
 if (require('electron-squirrel-startup')) app.quit();
