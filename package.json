@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "electron-forge start",
+    "start-web": "ng serve",
     "build": "ng build",
     "electron": "ng build --base-href ./ && electron .",
     "watch": "ng build --watch --configuration development",
