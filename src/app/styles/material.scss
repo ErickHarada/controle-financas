@@ -1,0 +1,64 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@include mat.core();
+
+$primary: (
+    50: #5CFF0A,
+    100: #52F500,
+    200: #4BE000,
+    300: #44cc00,
+    400: #38A700,
+    500: #36A300,
+    600: #308F00,
+    700: #297A00,
+    800: #226600,
+    900: #1B5200,
+    contrast: (50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: rgba(black, 0.87),
+        600: rgba(white, 0.87),
+        700: rgba(white, 0.87),
+        800: rgba(white, 0.87),
+        900: rgba(white, 0.87))
+);
+
+$secondary: (
+    50: #FD795E,
+    100: #FC684A,
+    200: #FC5736,
+    300: #FC4622,
+    400: #F42C04,
+    500: #F12B04,
+    600: #DD2803,
+    700: #C92403,
+    800: #B52003,
+    900: #A11D02,
+    contrast: (50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(white, 0.87),
+        500: rgba(white, 0.87),
+        600: rgba(white, 0.87),
+        700: rgba(white, 0.87),
+        800: rgba(white, 0.87),
+        900: rgba(white, 0.87))
+);
+
+$my-primary: mat.define-palette($primary, 400);
+$my-accent: mat.define-palette($primary, 700);
+$my-warn: mat.define-palette($secondary, 400);
+
+$my-theme: mat.define-light-theme((color: (primary: $my-primary,
+                accent: $my-accent,
+                warn: $my-warn ),
+        ));
+
+$background-color: mat.get-color-from-palette($primary, 900);
+$color: mat.get-theme-color($my-theme, primary, 900-contrast);
+
+@include mat.core-theme($my-theme);
+@include mat.all-component-themes($my-theme);
