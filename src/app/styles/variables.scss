@@ -4,5 +4,5 @@
 $green: #38A700;
 $red: #F42C04;
 
-$background-color-default: mat.get-color-from-palette($primary, 900);
-$color-default: mat.get-theme-color($my-theme, primary, 900-contrast);
+$background-color-default: mat.get-color-from-palette($primary, 700);
+$color-default: mat.get-theme-color($my-theme, primary, 700-contrast);

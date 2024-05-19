@@ -57,8 +57,5 @@ $my-theme: mat.define-light-theme((color: (primary: $my-primary,
                 warn: $my-warn ),
         ));
 
-$background-color: mat.get-color-from-palette($primary, 900);
-$color: mat.get-theme-color($my-theme, primary, 900-contrast);
-
 @include mat.core-theme($my-theme);
 @include mat.all-component-themes($my-theme);
