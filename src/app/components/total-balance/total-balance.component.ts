@@ -22,7 +22,6 @@ export class TotalBalanceComponent {
     }
   ];
   view: [number, number] = [600, 300];
-  gradient: boolean = true;
 
   colorScheme = [{ name: 'Receita', value: '#38A700' }, { name: 'Despeza', value: '#F42C04' }]
 
