@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,9 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { expenseCategories, incomeCategories } from '../../consts/categories.const';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { RegistryType } from '../../enums/registry-type.enum';
+import { registryType } from '../../consts/registry-type.const';
 
 @Component({
   selector: 'app-create-registry',
@@ -23,13 +24,16 @@ import { RegistryType } from '../../enums/registry-type.enum';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    NgFor
+    NgFor,
+    NgClass
   ],
   templateUrl: './create-registry.component.html',
   styleUrl: './create-registry.component.scss'
 })
 export class CreateRegistryComponent implements OnInit {
+  @Output() created = new EventEmitter();
 
+  registryType = registryType;
   categoryList = [];
   createRegistryForm: FormGroup;
 
@@ -50,7 +54,14 @@ export class CreateRegistryComponent implements OnInit {
     })
   }
 
-  create(): void { }
+  create(): void { 
+    const value = this.createRegistryForm.value;
+    this.created.emit({
+      type: this.registryType.find(t => t.id === value.type).name,
+      category: value.category.name,
+      value: `R$ ${value.value}`
+    })
+  }
 
   private buildForm(): FormGroup {
     return this.formBuilder.group({

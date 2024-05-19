@@ -1,9 +1,9 @@
 <p>management works!</p>
 
 <div class="create-registry">
-    <app-create-registry></app-create-registry>
+    <app-create-registry (created)="registryCreated($event)"></app-create-registry>
 </div>
 
 <div class="table">
-    <app-registry-table></app-registry-table>
+    <app-registry-table [dataSource]="dataTable"></app-registry-table>
 </div>

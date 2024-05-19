@@ -11,4 +11,9 @@ import { RegistryTableComponent } from '../registry-table/registry-table.compone
 })
 export class ManagementComponent {
 
+  dataTable = [];
+
+  registryCreated(registry: any): void {
+    this.dataTable = [...this.dataTable, registry];
+  }
 }

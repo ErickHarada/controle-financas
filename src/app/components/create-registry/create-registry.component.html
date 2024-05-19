@@ -8,18 +8,16 @@
     <mat-card-content>
         <form class="form" [formGroup]="createRegistryForm">
             <mat-radio-group class="form__radio-group" aria-label="Select an option" formControlName="type">
-                <mat-radio-button [value]="1">
+                @for (type of registryType; track type) {
+                <mat-radio-button [value]="type.id">
                     <div class="label">
-                        Entrada
-                        <mat-icon class="label__icon--green" matIconSuffix>arrow_circle_down</mat-icon>
+                        {{ type.name }}
+                        <mat-icon [ngClass]="'label__icon' + (type.id === 1 ? '--green' : '--red')" matIconSuffix>
+                            {{ type.id === 1 ? 'arrow_circle_down' : 'arrow_circle_up' }}
+                        </mat-icon>
                     </div>
                 </mat-radio-button>
-                <mat-radio-button [value]="2">
-                    <div class="label">
-                        Saída
-                        <mat-icon class="label__icon--red" matIconSuffix>arrow_circle_up</mat-icon>
-                    </div>
-                </mat-radio-button>
+                }
             </mat-radio-group>
 
             <mat-form-field>
