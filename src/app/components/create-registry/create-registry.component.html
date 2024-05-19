@@ -8,13 +8,13 @@
     <mat-card-content>
         <form class="form" [formGroup]="createRegistryForm">
             <mat-radio-group class="form__radio-group" aria-label="Select an option" formControlName="type">
-                <mat-radio-button value="1">
+                <mat-radio-button [value]="1">
                     <div class="label">
                         Entrada
                         <mat-icon class="label__icon--green" matIconSuffix>arrow_circle_down</mat-icon>
                     </div>
                 </mat-radio-button>
-                <mat-radio-button value="2">
+                <mat-radio-button [value]="2">
                     <div class="label">
                         Saída
                         <mat-icon class="label__icon--red" matIconSuffix>arrow_circle_up</mat-icon>

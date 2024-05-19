@@ -44,6 +44,9 @@ export class CreateRegistryComponent implements OnInit {
   subscribeTypeValue(): void {
     this.createRegistryForm.get('type').valueChanges.subscribe((value: number) => {
       this.categoryList = value === RegistryType.INCOME ? incomeCategories : expenseCategories
+      const category = this.createRegistryForm.get('category');
+      category.enable();
+      category.reset()
     })
   }
 
@@ -52,7 +55,7 @@ export class CreateRegistryComponent implements OnInit {
   private buildForm(): FormGroup {
     return this.formBuilder.group({
       type: [null, [Validators.required]],
-      category: [null, [Validators.required]],
+      category: [{disabled: true, value: null}, [Validators.required]],
       value: [null, [Validators.required]]
     });
   }
