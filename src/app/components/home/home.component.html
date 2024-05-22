@@ -1,7 +1,4 @@
-<p>home works!</p>
-
-
-<mat-card>
+<mat-card class="card">
     <mat-card-content>
         <div class="container">
             <div class="board">
@@ -16,3 +13,21 @@
         </div>
     </mat-card-content>
 </mat-card>
+
+<mat-accordion class="example-headers-align" multi>
+    @for(monthData of monthList; track month) {
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Mês
+            </mat-panel-title>
+            <mat-panel-description>
+                Description
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        Dados
+    </mat-expansion-panel>
+    } @empty {
+    <h3>Ainda não existe registro pra esse ano</h3>
+    }
+</mat-accordion>
