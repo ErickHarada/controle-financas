@@ -14,6 +14,6 @@ export class ManagementComponent {
   dataTable = [];
 
   registryCreated(registry: any): void {
-    this.dataTable = [...this.dataTable, registry];
+    this.dataTable = [registry, ...this.dataTable];
   }
 }
