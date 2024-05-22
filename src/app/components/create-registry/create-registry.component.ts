@@ -11,6 +11,8 @@ import { NgClass, NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { RegistryType } from '../../enums/registry-type.enum';
 import { registryType } from '../../consts/registry-type.const';
+import { months } from '../../consts/months.const';
+import { Month } from '../../enums/month.enum';
 
 @Component({
   selector: 'app-create-registry',
@@ -34,6 +36,7 @@ export class CreateRegistryComponent implements OnInit {
   @Output() created = new EventEmitter();
 
   registryType = registryType;
+  monthList = months;
   categoryList = [];
   createRegistryForm: FormGroup;
 
@@ -54,10 +57,11 @@ export class CreateRegistryComponent implements OnInit {
     })
   }
 
-  create(): void { 
+  create(): void {
     const value = this.createRegistryForm.value;
     this.created.emit({
       type: this.registryType.find(t => t.id === value.type).name,
+      month: value.month,
       category: value.category.name,
       value: `R$ ${value.value}`
     })
@@ -66,7 +70,8 @@ export class CreateRegistryComponent implements OnInit {
   private buildForm(): FormGroup {
     return this.formBuilder.group({
       type: [null, [Validators.required]],
-      category: [{disabled: true, value: null}, [Validators.required]],
+      month: [Month[new Date().getMonth() + 1].toLocaleLowerCase(), [Validators.required]],
+      category: [{ disabled: true, value: null }, [Validators.required]],
       value: [null, [Validators.required]]
     });
   }
