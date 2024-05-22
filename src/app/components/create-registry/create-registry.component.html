@@ -28,7 +28,7 @@
                     }
                 </mat-select>
             </mat-form-field>
-            
+
             <mat-form-field>
                 <mat-label>Categoria</mat-label>
                 <mat-select formControlName="category">
@@ -40,7 +40,8 @@
 
             <mat-form-field>
                 <mat-label>Valor</mat-label>
-                <input type="text" matInput formControlName="value">
+                <input currencyMask matInput formControlName="value"
+                    [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'left' }">
                 <mat-icon matIconPrefix>
                     attach_money
                 </mat-icon>

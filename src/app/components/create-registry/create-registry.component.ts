@@ -13,6 +13,7 @@ import { RegistryType } from '../../enums/registry-type.enum';
 import { registryType } from '../../consts/registry-type.const';
 import { months } from '../../consts/months.const';
 import { Month } from '../../enums/month.enum';
+import { NgxCurrencyDirective } from 'ngx-currency';
 
 @Component({
   selector: 'app-create-registry',
@@ -27,7 +28,8 @@ import { Month } from '../../enums/month.enum';
     MatIconModule,
     MatButtonModule,
     NgFor,
-    NgClass
+    NgClass,
+    NgxCurrencyDirective
   ],
   templateUrl: './create-registry.component.html',
   styleUrl: './create-registry.component.scss'
@@ -63,7 +65,7 @@ export class CreateRegistryComponent implements OnInit {
       type: this.registryType.find(t => t.id === value.type).name,
       month: value.month,
       category: value.category.name,
-      value: `R$ ${value.value}`
+      value: value.value
     })
   }
 
